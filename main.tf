@@ -31,6 +31,13 @@ module "cloudfront" {
   certificate_arn                  = module.acm.acm_arn
 }
 
+module "route53" {
+  source                           = "./modules/route53"
+  domain_name                      = replace(var.project_name, "-", ".")
+  distribution_domain_name         = module.cloudfront.distribution_domain_name
+  distribution_hosted_zone_id      = module.cloudfront.distribution_hosted_zone_id
+}
+
 module "s3" {
   source                           = "./modules/s3"
   s3_website_bucket                = replace(var.project_name, "-", ".")
