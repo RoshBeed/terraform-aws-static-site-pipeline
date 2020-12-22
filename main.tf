@@ -44,7 +44,7 @@ module "codebuild" {
 module "codepipeline" {
   source                            = "./modules/codepipeline"
   codepipeline_name                 = "${var.project_name}-CodePipeline"
-  codepipeline_artifact_bucket_name = "${var.project_name}-CodeBuildArtifacts"
+  codepipeline_artifact_bucket_name = "${var.project_name}-codebuild_artifacts"
   codepipeline_role_name            = "${var.project_name}-CodePipelineIamRole"
   codepipeline_role_policy_name     = "${var.project_name}-CodePipelineIamRolePolicy"
   github_repo_name                  = module.github.github_repo_name
