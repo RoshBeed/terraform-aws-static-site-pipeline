@@ -21,7 +21,7 @@ provider "github" {
 
 module "s3" {
   source            = "./modules/s3"
-  s3_website_bucket = "${var.project_name}-website"
+  s3_website_bucket = replace(var.project_name, "-", ".")
 }
 
 module "github" {
