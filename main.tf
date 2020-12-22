@@ -19,6 +19,11 @@ provider "aws" {
 provider "github" {
 }
 
+module "acm" {
+  source            = "./modules/acm"
+  root_domain_name  = replace(var.project_name, "-", ".")
+}
+
 module "s3" {
   source            = "./modules/s3"
   s3_website_bucket = replace(var.project_name, "-", ".")
