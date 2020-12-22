@@ -1,9 +1,6 @@
-output "s3_website_bucket_endpoint" {
-  value = aws_s3_bucket.s3_website_bucket.website_endpoint
+output "acm_id" {
+  value = aws_acm_certificate.certificate.id
 }
-output "s3_website_bucket_arn" {
-  value = aws_s3_bucket.s3_website_bucket.arn
-}
-output "s3_website_bucket" {
-  value = aws_s3_bucket.s3_website_bucket.bucket
+output "acm_domain_name" {
+  value = aws_acm_certificate.certificate.domain_name
 }
