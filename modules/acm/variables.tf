@@ -1,3 +1,3 @@
-variable "root_domain_name" {
+variable "domain_name" {
   description = "website domain name"
 }

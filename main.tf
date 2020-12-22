@@ -20,19 +20,26 @@ provider "github" {
 }
 
 module "acm" {
-  source            = "./modules/acm"
-  root_domain_name  = replace(var.project_name, "-", ".")
+  source                           = "./modules/acm"
+  domain_name                      = replace(var.project_name, "-", ".")
+}
+
+module "cloudfront" {
+  source                           = "./modules/cloudfront"
+  domain_name                      = replace(var.project_name, "-", ".")
+  s3_website_bucket_endpoint       = module.s3.s3_website_bucket_endpoint
+  certificate_arn                  = module.acm.acm_arn
 }
 
 module "s3" {
-  source            = "./modules/s3"
-  s3_website_bucket = replace(var.project_name, "-", ".")
+  source                           = "./modules/s3"
+  s3_website_bucket                = replace(var.project_name, "-", ".")
 }
 
 module "github" {
-  source          = "./modules/github"
-  repository_name = replace(var.project_name, "-", ".")
-  owner_name      = var.github_owner_name
+  source                           = "./modules/github"
+  repository_name                  = replace(var.project_name, "-", ".")
+  owner_name                       = var.github_owner_name
 }
 
 module "codebuild" {
