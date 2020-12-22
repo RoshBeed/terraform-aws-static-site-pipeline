@@ -26,7 +26,7 @@ module "s3" {
 
 module "github" {
   source          = "./modules/github"
-  repository_name = var.project_name
+  repository_name = replace(var.project_name, "-", ".")
   owner_name      = var.github_owner_name
 }
 
