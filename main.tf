@@ -26,7 +26,7 @@ module "s3" {
 
 module "github" {
   source          = "./modules/github"
-  repository_name = "${var.project_name}-Github"
+  repository_name = var.project_name
   owner_name      = var.github_owner_name
 }
 
@@ -44,7 +44,7 @@ module "codebuild" {
 module "codepipeline" {
   source                            = "./modules/codepipeline"
   codepipeline_name                 = "${var.project_name}-CodePipeline"
-  codepipeline_artifact_bucket_name = "${var.project_name}-codebuild-demo-artifact-bucket-name"
+  codepipeline_artifact_bucket_name = "${var.project_name}-CodeBuildArtifacts"
   codepipeline_role_name            = "${var.project_name}-CodePipelineIamRole"
   codepipeline_role_policy_name     = "${var.project_name}-CodePipelineIamRolePolicy"
   github_repo_name                  = module.github.github_repo_name
