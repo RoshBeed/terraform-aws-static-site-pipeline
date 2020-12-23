@@ -1,4 +1,6 @@
-# Deploy a static site to AWS using Terraform Cloud 
+# Deploy a static site to AWS using Terraform Cloud
+
+![visual](visual.png)
 
 This repository is used by Terraform Cloud to create
 CodePipeline
